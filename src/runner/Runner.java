@@ -1,14 +1,19 @@
 package runner;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 import javax.sql.rowset.serial.SerialBlob;
+import models.Dosis;
+import models.DosisAplicada;
 import models.Enfermedad;
 import models.Historial;
-import models.Persona;
+import models.Vacuna;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
 public class Runner {
@@ -17,20 +22,13 @@ public class Runner {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        Persona persona = new Persona();
-        persona.setId(1);
-        persona.setDocumento("1049650075");
-        persona.setTipoDocumento("CC");
-        persona.setNombres("Nicolas Dario");
-        persona.setApellidos("Espitia Torres");
-        persona.setFechaNacimiento(Calendar.getInstance().getTime());
-        
-        Historial historial = new Historial();
-        historial.setFechaCreacion(Calendar.getInstance().getTime());
-        historial.setPersona(persona);
-        session.save(persona);
-        session.save(historial);
-        
+
+        Historial historial = (Historial) session.get(Historial.class, 1);
+        Dosis dosis = (Dosis)  session.get(Dosis.class, 1);
+
+        DosisAplicada dosisAplicada = new DosisAplicada(1, Calendar.getInstance().getTime(), historial, dosis);
+
+        session.save(dosisAplicada);
         transaction.commit();
 
         session.close();

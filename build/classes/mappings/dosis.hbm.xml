@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="models.Dosis" table="DOSIS" schema="NICOLAS">
+        <id name="id" type="java.lang.Integer">
+            <column name = "ID"></column>
+            <generator class="assigned"></generator>
+        </id> 
+        <property name ="valorTiempo" type="int">
+            <column name = "VALOR_TIEMPO" not-null="true"></column>
+        </property>
+        <property name ="unidadTiempo" type="string">
+            <column name = "UNIDAD_TIEMPO" not-null="true"></column>
+        </property>
+        
+        <many-to-one name="vacuna" column= "ID_VACUNA"/>
+    </class>
+
+</hibernate-mapping>
+
+

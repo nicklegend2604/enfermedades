@@ -2,12 +2,15 @@ package models;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Enfermedad implements Serializable{
     
     private Integer id;
     private Blob descripcion;
     private String nombre;
+    private Set<Vacuna> vacunas = new HashSet<>(0);
 
     public Enfermedad() {
     }
@@ -41,8 +44,13 @@ public class Enfermedad implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    
+
+    public Set<Vacuna> getVacunas() {
+        return vacunas;
+    }
+
+    public void setVacunas(Set<Vacuna> vacunas) {
+        this.vacunas = vacunas;
+    }
     
 }

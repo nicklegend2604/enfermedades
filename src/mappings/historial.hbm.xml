@@ -25,6 +25,11 @@ and open the template in the editor.
         
         <one-to-one name="persona" constrained="true"/>
         
+        <set name="listaDosisAplicada">
+            <key column="id_historial"/>
+            <one-to-many class="models.DosisAplicada"></one-to-many>
+        </set>
+        
        
     </class>
 

@@ -10,28 +10,24 @@ and open the template in the editor.
 
 <hibernate-mapping>
 
-    <class name="models.Enfermedad" table="ENFERMEDAD" schema="NICOLAS">
+    <class name="models.Vacuna" table="VACUNA" schema="NICOLAS">
         <id name="id" type="java.lang.Integer">
             <column name = "ID"></column>
             <generator class="assigned"></generator>
         </id> 
-        
-        <property name ="descripcion" type="blob">
+        <property name ="descripcion" type="binary">
             <column name = "DESCRIPCION"></column>
         </property>
-        
-        
         <property name ="nombre" type="string">
             <column name = "NOMBRE" length="100" not-null="true" unique="true"></column>
         </property>
         
-        
-        <set name="vacunas" table="ENFERMEDAD_VACUNA" inverse="true" lazy="true" fetch="select">
+        <set name="enfermedades" table="ENFERMEDAD_VACUNA" lazy="true" fetch="select" cascade="all" >
             <key>
-                <column name="ID_ENFERMEDAD" not-null="true" />
-            </key>
-            <many-to-many entity-name="models.Vacuna">
                 <column name="ID_VACUNA" not-null="true" />
+            </key>
+            <many-to-many entity-name="models.Enfermedad">
+                <column name="ID_ENFERMEDAD" not-null="true" />
             </many-to-many>
         </set>
     </class>

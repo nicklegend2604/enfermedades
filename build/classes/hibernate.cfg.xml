@@ -49,5 +49,8 @@ Contributor(s):
     <mapping resource="mappings/enfermedad.hbm.xml"/>
     <mapping resource="mappings/persona.hbm.xml"/>
     <mapping resource="mappings/historial.hbm.xml"/>
+    <mapping resource="mappings/vacuna.hbm.xml"/>
+    <mapping resource="mappings/dosis.hbm.xml"/>
+    <mapping resource="mappings/dosis_aplicada.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ package models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 
 public class Historial implements Serializable{
@@ -9,6 +10,7 @@ public class Historial implements Serializable{
     private Date fechaCreacion;
     private Integer idPersona;
     private Persona persona;
+    private Set<DosisAplicada> listaDosisAplicada;
 
     public Historial() {
     }
@@ -41,5 +43,13 @@ public class Historial implements Serializable{
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    public Set<DosisAplicada> getListaDosisAplicada() {
+        return listaDosisAplicada;
+    }
+
+    public void setListaDosisAplicada(Set<DosisAplicada> listaDosisAplicada) {
+        this.listaDosisAplicada = listaDosisAplicada;
     }
 }
