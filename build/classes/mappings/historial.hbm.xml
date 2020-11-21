@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="models.Historial" table="HISTORIAL" schema="NICOLAS">
+
+        <id column="id_persona" name = "idPersona">
+            <generator class="foreign">
+                <param name="property">persona</param>
+            </generator>
+        </id>
+        
+        <property name="fechaCreacion" type="date">
+            <column name= "fecha_creacion" not-null="true"/>
+            
+        </property>
+        
+        <one-to-one name="persona" constrained="true"/>
+        
+       
+    </class>
+
+</hibernate-mapping>
+
+
